@@ -14,7 +14,7 @@ dt = 0.01 # time step
 nt = 50 # number of time steps
 time = np.arange(nt+1)*dt
 for t in np.arange(nt):
-    N = diffusion(kappa,dz,dt,N0,N)
+    N = diffusion_time_stepping(kappa,dz,dt,N0,N)
     Nsave = np.concatenate((Nsave,[N]),axis = 0)
 
 plt.pcolor(time,grid,Nsave.T)
