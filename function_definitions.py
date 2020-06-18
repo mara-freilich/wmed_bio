@@ -18,9 +18,9 @@ def diffusion_finite_difference(kappa,dz,N0):
     d1 = -(kappa[:-1] + kappa[1:]) # diagonal entries
     d1 = np.append(-kappa[0],d1)
     
-    A = (1/dz**2)*(np.diag(d1)+np.diag(kappa[:-1],1)+np.diag(kappa[:-1],-1))
+    A = (1/dz**2)*(np.diag(d1)+np.diag(kappa[:-1],1)+np.diag(kappa[:-1],-1)) # left hand side matrix
     b = np.zeros(kappa.shape)
-    b[-1] = b[-1]-N0*(kappa[-1]/dz**2)
+    b[-1] = b[-1]-N0*(kappa[-1]/dz**2) # right hand side vector with bottom boundary condition
     
     return A, b
 
